@@ -1,8 +1,4 @@
-let input = readLine()!.split{$0 == " "}.map{Int(String($0))!}
-
-func reverse(of n: Int) -> Int{
-    let result = (n%10)*100 + ((n/10)%10)*10 + (n/100)
-    return result
-}
-
-print(max(reverse(of: input[0]),reverse(of: input[1])))
+let inputs = readLine()!.split(separator: " ")
+let A = Int(String(inputs[0].reversed()))!
+let B = Int(String(inputs[1].reversed()))!
+print(A > B ? A : B)
