@@ -25,3 +25,6 @@ while N > 0 {
     N -= 1
 }
 print(count)
+
+// 추가. 무려 한줄로 푼 사람..ㅎ
+readLine();print(readLine()!.split{$0==" "}.map{Int($0)!}.filter{(i:Int)in i != 1 && Array(2..<i).filter{i%$0==0}.count==0}.count)
