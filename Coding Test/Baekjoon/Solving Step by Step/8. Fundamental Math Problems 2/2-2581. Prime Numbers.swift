@@ -1,8 +1,8 @@
-let inputs = readLine()!.split{$0 == " "}.map{Int(String($0))!}
-let (min, max) = (inputs[0], inputs[1])
+import Foundation
+let (min, max) = (Int(readLine()!)!, Int(readLine()!)!)
 
 let primes = Array(min...max).filter{i in 
-    let endpoint = Double(i).squareRoot()
+    let endpoint = Double(i).squareRoot() + 1
     return i != 1 && Array(1..<Int(endpoint)).filter{i%$0==0}.count == 1}
 
 if primes.isEmpty {
