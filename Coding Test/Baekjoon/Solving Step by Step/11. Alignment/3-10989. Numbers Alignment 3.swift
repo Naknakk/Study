@@ -56,9 +56,28 @@ final class FileIO {
 }
 
 let fIO = FileIO()
-let n = fIO.readInt()
+let N = fIO.readInt()
+var inputs = Array(repeating: 0, count: N)
+for i in 0..<N {
+    inputs[i] = fIO.readInt()
+}
+var max = inputs.max()!
+var counting = Array(repeating: 0, count: max+1)
+var sortednumbers = Array(repeating: 0, count: N)
+
+for i in 0..<N {
+    counting[inputs[i]] += 1
+}
+for i in 1...max {
+    counting[i] = counting[i-1] + counting[i]
+}
+for i in 0..<N {
+    sortednumbers[counting[inputs[i]]-1] = inputs[i]
+    counting[inputs[i]] -= 1
+}
+
 var str = ""
-for _ in 0..<n {
-    str += "\(fIO.readInt() + fIO.readInt())\n"
+for number in sortednumbers {
+    str += "\(number)\n"
 }
 print(str)

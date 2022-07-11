@@ -56,9 +56,14 @@ final class FileIO {
 }
 
 let fIO = FileIO()
-let n = fIO.readInt()
+let N = fIO.readInt()
+var numbers = Array(repeating: 0, count: N)
+for i in 0..<N {
+    numbers[i] = fIO.readInt()
+}
+numbers.sort(by: <)
 var str = ""
-for _ in 0..<n {
-    str += "\(fIO.readInt() + fIO.readInt())\n"
+for number in numbers {
+    str += "\(number)\n"
 }
 print(str)
