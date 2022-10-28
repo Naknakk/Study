@@ -13,4 +13,4 @@ for _ in 0..<M {
         count += 1
     }
 }
-print(count)8---
+print(count)
