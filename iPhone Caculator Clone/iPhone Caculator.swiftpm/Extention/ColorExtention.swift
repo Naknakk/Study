@@ -1,6 +1,7 @@
 import SwiftUI
 
 extension Color {
-    static let numberBackground = Color(UIColor.gray).opacity(0.4)
-    static let calBackground = Color.orange
+    static let numberBackground = Color(UIColor.darkGray) 
+    static let operatorBackground = Color.orange
+    static let functionBackground = Color(UIColor.lightGray)
 }

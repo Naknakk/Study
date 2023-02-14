@@ -10,19 +10,24 @@ struct OperatorButton: View {
     }
     
     let op: Operator
+    let geo: GeometryProxy
     
-    init (_ op: Operator) {
+    init (_ op: Operator, geo: GeometryProxy) {
         self.op = op
+        self.geo = geo
     }
+    
     var body: some View {
+        let width = geo.size.width / 4 - 4
         Button(
             action: { print(op.rawValue) },
             label: {
-                Circle().fill(Color.calBackground)
+                Capsule().fill(Color.operatorBackground)
                     .overlay {
                         Image(systemName: op.rawValue).imageScale(.large).bold() .foregroundColor(.white)
                     }
-                    .frame(width: 58, height: 58, alignment: .center)
+                    .padding(width/20)
+                    .frame(width: width, height: width, alignment: .center)
             }
         )
     }
@@ -30,6 +35,9 @@ struct OperatorButton: View {
 
 struct OperatorButton_Previews: PreviewProvider {
     static var previews: some View {
-        OperatorButton(.plus)
+        GeometryReader{ geo in
+            OperatorButton(.plus, geo: geo)
+        }
+        
     }
 }

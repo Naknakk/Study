@@ -2,15 +2,19 @@ import SwiftUI
 
 struct NumberButton: View {
     let n: String
+    let geo: GeometryProxy
     
-    init (_ n: String) {
+    init (_ n: String, geo: GeometryProxy) {
         self.n = n
+        self.geo = geo
     }
-    init (_ n: Int) {
+    init (_ n: Int, geo: GeometryProxy) {
         self.n = String(n)
+        self.geo = geo
     }
     
     var body: some View {
+        let width = geo.size.width / 4 - 4
         Button(
             action: { print(n) },
             label: {
@@ -18,7 +22,8 @@ struct NumberButton: View {
                     .overlay {
                         Text(n).font(.system(.title, weight: .medium)).foregroundColor(.white)
                     }
-                    .frame(width: n != "0" ? 58 : 121, height: 58, alignment: .center)
+                    .padding(width/20)
+                    .frame(width: n != "0" ? width : width*2, height: width, alignment: .center)
             }
         )
     }
@@ -26,6 +31,8 @@ struct NumberButton: View {
 
 struct NumberButton_Previews: PreviewProvider {
     static var previews: some View {
-        NumberButton(5)
+        GeometryReader {geo in 
+            NumberButton(5, geo: geo)
+        }
     }
 }
